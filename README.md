@@ -1,5 +1,35 @@
 本repo主要复制于[awesome-adb](https://github.com/mzlogin/awesome-adb)
 
+
+# apktool apk反编译工具
+https://ibotpeaches.github.io/Apktool/install/
+
+mac下可以直接`brew install apktool`进行安装。
+
+首先apk文件就是一个zip文件：
+```
+unzip testapp.apk
+```
+而apktool则可以
+```
+apktool d x.apk
+```
+
+# matrix
+在android上执行脚本的工具。  
+使用matrix可以实现移动端自动化测试。  
+
+# android投屏工具
+mac下使用`brew install scrcpy`命令安装，安装时使用brew镜像可能会出错。  
+https://github.com/Genymobile/scrcpy/blob/master/BUILD.md#simple
+
+
+# 在android上运行python：使用QPython
+https://github.com/qpython-android/qpython3/releases
+
+# 在android上运行终端：使用termux
+
+
 ## 参考链接
 * [Android Debug Bridge](https://developer.android.com/studio/command-line/adb.html)
 * [ADB Shell Commands](https://developer.android.com/studio/command-line/shell.html)
