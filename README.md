@@ -19,6 +19,8 @@ apktool d x.apk
 在android上执行脚本的工具。  
 使用matrix可以实现移动端自动化测试。  
 
+getprop ro.serialno 获取系统版本号
+
 # android投屏工具
 mac下使用`brew install scrcpy`命令安装，安装时使用brew镜像可能会出错。  
 https://github.com/Genymobile/scrcpy/blob/master/BUILD.md#simple
@@ -29,6 +31,25 @@ https://github.com/qpython-android/qpython3/releases
 
 # 在android上运行终端：使用termux
 
+# adb shell 网络
+adb shell svc wifi disable 可以关闭wifi
+adb shell svc wifi enable 可以打开wifi
+adb shell svc wifi prefer 即wifi+4G一起打开的情况下，可以优先使用wifi通讯
+adb shell svc data disable 可以关闭4G数据通讯
+adb shell svc data enable 可以打开4G数据通讯
+adb shell svc data prefer 即wifi+4G一起打开的情况下，可以优先使用4G通讯
+
+# Android Web Toolbox
+我一直想做的一个ADB管理工具。  
+https://yume-chan.github.io/ya-webadb/
+
+* 基于WebUSB API。火狐认为WebUSB很危险，所以直接不支持。要想使用这个网页，需要在Chrome里面使用。
+* 在网页里面操作ADB容易被窃取信息，比较危险。  
+* 这个网页的安全性基于作者的人格和开源。
+
+竞品：
+* https://github.com/webadb/webadb.js：只有js，没有网页；基于WebUSB；5年没有更新了
+* https://github.com/antdking/WebADB：有网页，没有README；5年没有更新
 
 ## 参考链接
 * [Android Debug Bridge](https://developer.android.com/studio/command-line/adb.html)

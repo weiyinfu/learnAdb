@@ -4,6 +4,10 @@ adb shell进入交互式命令行，这时候的shell完全就是一个精简版
 * /system/bin  
 * /vendor/bin
 
+# 启动应用
+    adb shell am start com.bytedance.platform/com.unity3d.player.UnityPlayerActivity
+    adb shell dumpsys package com.bytedance.platform
+
 # 使用alias简化一些命令
 ```shell
 alias login='adb shell input text 12345678901 && adb shell input keyevent 61 && adb shell input keyevent 61 && adb shell input text 1234
@@ -66,3 +70,7 @@ Charles抓包容易，设置网络代理麻烦
 ```shell
 adb shell am start com.tencent.mm/com.tencent.mm.ui.LauncherUI
 ```
+
+# 截屏
+adb shell screencap -p /sdcard/01.png  截屏
+adb pull /sdcard/01.png  把图片下载到本地
