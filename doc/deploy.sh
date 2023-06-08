@@ -1,0 +1,1 @@
+rsync -r --progress book/* me:~/app/MyStatic/learnAdb

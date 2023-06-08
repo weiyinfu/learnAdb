@@ -7,7 +7,6 @@ from pprint import pprint
 from typing import Union
 
 import colorama
-import colorlog
 
 from fu import dict_util
 
@@ -74,13 +73,21 @@ black_lines = [
     "AudioTrack: isLongTimeZoreData zoer date",
     "PXRSDK_PM ENGINE FPS",
     "AppLog  : receive data=",
+    "PxrMetric: FPS=",
+    "ppfMessageQueue_SendMessage: ppfMessageQueue_SendMessage messageType=",
+    "ppfMessageQueue_RecvMessage:pop a message messageType=",
+    "PlatformImpl: CheckReport: message queue size=",
+    "UnityMain identical ",
+    "Thread-9 identical ",
+    "OnRoomStats: receive OnRoomStats room_id",
+    "save, 1, 1, 0, 0, 0",
 ]
 
 
 class Message:
     def __init__(self, s: str):
         self.has_error = True
-        self.level = logging.INFO
+        self.level = logging.DEBUG
         self.s = s.strip()
         res = re.search(r"(\S+\s*\S+)\s*(\S+)\s*(\S+)\s*(\S+)\s*(\S+)\s*:\s*(.*)", s)
         if res is None:
@@ -109,7 +116,7 @@ class Message:
         return fore + self.s + colorama.Fore.RESET
 
 
-def logcat(pkg_name: str):
+def logcat(pkg_name: str, log_level: int):
     pid = get_package_pid(pkg_name)
     popen: Union[sp.Popen, None] = None
 
@@ -160,7 +167,7 @@ def logcat(pkg_name: str):
                 if bad:
                     continue
                 m = Message(s)
-                if m.level >= logging.INFO:
+                if m.level >= log_level:
                     print(m)
             print("跳出进程循环")
 
@@ -174,34 +181,32 @@ def parse_line():
 
 def main():
     # pkg_name = sys.argv[1]
-    pkg_name = "com.bytedance.platform"
-    # pkg_name = "com.picopui.im"
-    # pkg_name = "com.bytedance.mpaas.app.client_demo"
-    # pkg_name = "com.bytedance.platformonlie"
-    # pkg_name = "cn.weiyinfu.myrtcapplication"
-    pkg_name = "com.bytedance.pico.matrix"
-    # pkg_name = "com.matrix.sdk.unity"
-    # pkg_name = "com.bytedance.platformhw"
-    # pkg_name = "com.bytedance.platformhw"
-    # pkg_name = "com.bytedance.learnPicoXr"
-    # pkg_name = "com.bytedance.picoworlds"
-    # pkg_name="com.bytedance.GameRTCUnitySDK_android_2017"
-    # pkg_name = "com.bytedance.mpaas.app.client_demo"
-    # pkg_name = "com.DevsUnitedGames.RealVrFishingP"
-    # pkg_name = "com.chesstar.chaoranyike.launcher"
-    # pkg_name = "com.example.qiujian12"
-    # pkg_name="com.BoyceDemo.PicoSDK"
-    # pkg_name = 'com.bytedance.noncnsub'
-    # pkg_name = "com.bytedance.platformonlie"
-    pkg_name = "com.bytedance.newonline"
-    # pkg_name = "com.Alta.ATownshipTale"
-    # pkg_name = "com.bytedance.subppe"
-    # pkg_name = "com.example.myapplication"
-    # pkg_name = "com.Appnori.AllInOneSportsGB"
-    # pkg_name = "com.ss.android.ttvr.unity"
-    pkg_name = "com.bytedance.platformsdkproxy"
-    logcat(pkg_name)
+    # pkg_name = "com.bytedance.picovideo"
 
+    # pkg_name = "com.characterBank.ruinsmagus"
+    # pkg_name = "com.bytedance.platformonlie"
+    # pkg_name = "com.bytedance.speech.speechdemo"
+    # pkg_name = "com.bytedance.subppe"
+    # pkg_name = "com.ss.android.ttvr.unity"
+    # pkg_name = "com.UnityTestRunner.UnityTestRunner"
+    pkg_name = "com.example.speechdemoandroid2"
+    pkg_name = "com.bytedance.speech.speechdemo"
+    # pkg_name = "com.example.myapplication"
+    # pkg_name = "com.bytedance.mpaas.app.client_demo"
+    # pkg_name = "com.picopui.im"
+    # pkg_name = "com.pico.samples.platform.unity.SpaceArenaParty"
+    # pkg_name = "com.bytedance.platformsdkproxy"
+    pkg_name = "com.Gamedust.Yupitergrad2"
+    # pkg_name = "com.UnityTestRunner.UnityTestRunner"
+    pkg_name = "com.DefaultCompany.RtcUnity"
+    # pkg_name = "com.DefaultCompany.demo1"
+    # pkg_name = "com.DefaultCompany.testIntegration"
+    pkg_name = "com.Gamedust.Yupitergrad2"
+    # pkg_name = "com.bytedance.pico.matrix"
+    pkg_name = "com.bytedance.newonline"
+    # pkg_name = "com.bytedance.speech.speechdemo"
+    # pkg_name="com.bytedance.unityAsr"
+    logcat(pkg_name, logging.INFO)
 
 def test():
     m = Message("""09-09 16:50:02.864 10937 10960 I Unity   : 10{"AssetId":7140988031800164396,"AssetType":"default","DownloadStatus":"available","Filepath":"/storage/emulated/0/Android/obb/com.bytedance.platform/charles-proxy-4.6.2-win64.msi","Metadata":"","Filename":"charles-proxy-4.6.2-win64.msi","Version":1,"IapStatus":"not-entitled","IapSku":"Addons_test_6","IapName":"Addons_test_6","IapPrice":"198.90","IapCurrency":"CNY","IapDescription":"来段描述","IapIcon":"https://static-appstore-backup.oss-accelerate.aliyuncs.com/developer-platform/submission/assets/icon/2022-07-08/899623f99bce3fc7fabd3c4bd661011c.jpg"}

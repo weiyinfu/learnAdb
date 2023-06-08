@@ -51,6 +51,21 @@ https://yume-chan.github.io/ya-webadb/
 * https://github.com/webadb/webadb.js：只有js，没有网页；基于WebUSB；5年没有更新了
 * https://github.com/antdking/WebADB：有网页，没有README；5年没有更新
 
+# adb UI工具技术选型
+* Unity：Unity也能够做UI
+* electron+js
+* python+qt
+* java+swing
+
+# 重要性
+现在的手机性能非常高，并且很少关机，可以认为是一个一直运行着的服务器。  
+也可以作为移动硬盘。  
+如果能够把手机充分用起来，则手机能够发挥巨大价值。  
+
+# logcat工具优化
+1. 查看特定包的日志
+2. AndroidStudio无法用来分析崩溃，我的logcat可以一直运行着等待抓取特定logcat。
+3. AndroidStudio无法过滤特定行的日志
 ## 参考链接
 * [Android Debug Bridge](https://developer.android.com/studio/command-line/adb.html)
 * [ADB Shell Commands](https://developer.android.com/studio/command-line/shell.html)

@@ -4,6 +4,9 @@ adb shell进入交互式命令行，这时候的shell完全就是一个精简版
 * /system/bin  
 * /vendor/bin
 
+# 关机
+adb shell reboot -p
+
 # 启动应用
     adb shell am start com.bytedance.platform/com.unity3d.player.UnityPlayerActivity
     adb shell dumpsys package com.bytedance.platform

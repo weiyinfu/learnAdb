@@ -13,3 +13,12 @@ PICO独有的特性
 * 删除指定文件：adb shell rm -rf xxx
 * 进入2d设置界面： adb shell am start -n com.android.settings/com.android.settings.Settings
 * 打开设置界面：adb shell am start -n com.picovr.settings/com.picovr.vrsettingslib.UnityActivity
+
+             # The matrix version
+            adb shell dumpsys package com.bytedance.pico.matrix | grep version
+
+            # The friend app version
+            adb shell dumpsys package com.picopui.im | grep version
+
+            # The ROM/PUI version
+            adb shell getprop ro.pvr.internal.version
